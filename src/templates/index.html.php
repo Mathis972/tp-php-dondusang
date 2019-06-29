@@ -47,7 +47,7 @@
     <div class="container">
       <h1 class="jumbotron-heading">Je veux donner mon sang</h1>
       <p class="lead text-muted">Nous trouvons pour vous le point le plus proche pour donner votre sang.</p>
-      <form>
+      <form method="GET" action="index.php">
         <div class="form-group">
             <label for="addresse">Quelle est votre adresse ?</label>
             <input name="addresse" type="text" class="form-control" id="addresse" aria-describedby="emailHelp" placeholder="18 rue descartes Villeurbanne">
@@ -56,7 +56,7 @@
         </form>
     </div>
   </div>
-
+  <?php if (isset ($calculusArray[0])) {?>
   <div class="container">
       <h2>Nous avons trouvé 2 points de don du sang.</h2>
       <hr />
@@ -65,7 +65,7 @@
             <div class="card">
             <div class="card-body">
                 <h5 class="card-title">École YNOV</h5>
-                <p class="card-text">à 2.5km</p>
+                <p class="card-text">à <?= $calculusArray[0].' km'?></p>
             </div>
             </div>
         </div>
@@ -73,12 +73,13 @@
             <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Mairie de Villeurbanne</h5>
-                <p class="card-text">à 500m</p>
+                <p class="card-text">à <?= $calculusArray[1].' km'?></p>
             </div>
             </div>
         </div>
       </div>
   </div>
+  <?php } ?>
 </main>
 
 <script type="text/javascript" src="http://<?= $_SERVER['HTTP_HOST'] ?>/js/index.js"></script>
